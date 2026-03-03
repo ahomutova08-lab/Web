@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sandwich cald - Rețele culinare</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../index.html" class="brand">Rețele culinare</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="recipe" data-recipe-id="sandwich-cald" data-fav-key="retete/sandwich.html">
+
+      <h1>Sandwich cald</h1>
+
+      <div class="recipe-meta">
+        <span class="chip">⏱️ 10 min</span>
+        <span class="chip">📈 ușor</span>
+        <span class="chip">🍽️ <span id="portion-value">2</span> porții</span>
+
+        <button id="page-fav-btn" class="page-fav-btn" type="button" data-recipe="retete/sandwich.html">
+          <span class="page-fav-star">☆</span>
+          <span class="page-fav-label">Adaugă la favorite</span>
+        </button>
+      </div>
+
+      <div class="recipe-hero">
+        <div>
+          <p>Sandwich-ul cald este o gustare rapidă și gustoasă, ideală pentru mic dejun sau pauze scurte.</p>
+          <p><strong>Ingredientele se ajustează automat când schimbi porțiile.</strong></p>
+
+          <div class="portion-controls">
+            <button id="dec-portion" type="button" aria-label="Scade porții">−</button>
+            <span class="portion-label">Porții: <span id="portion-live">2</span></span>
+            <button id="inc-portion" type="button" aria-label="Crește porții">+</button>
+          </div>
+
+          <div class="action-row">
+            <strong>Timer:</strong>
+            <span id="timer-display">10:00</span>
+            <button id="start-timer" class="btn" type="button">Start</button>
+            <button id="reset-timer" class="btn" type="button">Reset</button>
+          </div>
+
+          <div class="note" style="margin-top:12px;">
+            <strong>Sfat:</strong> Unge exteriorul pâinii cu puțin unt pentru o crustă crocantă.
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="https://media.istockphoto.com/id/1088403682/photo/hot-toasted-sandwich-fresh-from-the-plate-grill.webp?a=1&b=1&s=612x612&w=0&k=20&c=YHUH8gnVTkGqO05_MyqTlAUVYN_bApzuuWmbdkR8NqM="
+            alt="Sandwich cald"
+            class="recipe-img"
+          />
+        </div>
+      </div>
+
+      <div class="recipe-grid">
+
+        <section class="card">
+          <h2>🥪 Ingrediente</h2>
+          <ul id="ingredient-list">
+            <li data-base="4"><span class="qty">4</span> felii pâine</li>
+            <li data-base="100"><span class="qty">100</span> g șuncă</li>
+            <li data-base="100"><span class="qty">100</span> g cașcaval</li>
+            <li data-base="20"><span class="qty">20</span> g unt</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>📝 Mod de preparare</h2>
+          <ol class="steps">
+            <li>Se așază ingredientele între feliile de pâine.</li>
+            <li>Se rumenește pe grill sau în tigaie.</li>
+          </ol>
+        </section>
+
+      </div>
+
+      <section class="card">
+        <h2>💡 Sfaturi</h2>
+        <p>Pentru un plus de gust, poți adăuga 1–2 felii de roșie sau puțin muștar, iar cașcavalul se va topi mai uniform dacă ții focul mic.</p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <span>© 2026 Rețele culinare</span>
+      <span class="muted">realizat de Homutova Alexandra</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Înapoi sus" type="button">↑</button>
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

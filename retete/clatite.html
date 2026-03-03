@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clătite clasice - Rețele culinare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../index.html" class="brand">Rețele culinare</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="recipe">
+
+      <h1>Clătite clasice</h1>
+
+      <div class="recipe-meta">
+        <span class="chip">⏱️ 20 min</span>
+        <span class="chip">📈 ușor</span>
+        <span class="chip">🍽️ <span id="portion-value">4</span> porții</span>
+
+        <!-- BUTON FAVORIT — data-recipe identic cu cel din index.html -->
+        <button id="page-fav-btn" class="page-fav-btn" type="button" data-recipe="retete/clatite.html">
+          <span class="page-fav-star">☆</span>
+          <span class="page-fav-label">Adaugă la favorite</span>
+        </button>
+      </div>
+
+      <div class="recipe-hero">
+        <div>
+          <p>Clătitele clasice sunt un preparat delicios, perfect pentru mic dejun sau desert.</p>
+          <p><strong>Ingredientele se ajustează automat când schimbi porțiile.</strong></p>
+
+          <div class="portion-controls">
+            <button id="dec-portion" type="button" aria-label="Scade porții">−</button>
+            <span class="portion-label">Porții: <span id="portion-live">4</span></span>
+            <button id="inc-portion" type="button" aria-label="Crește porții">+</button>
+          </div>
+
+          <div class="action-row">
+            <strong>Timer:</strong>
+            <span id="timer-display">5:00</span>
+            <button id="start-timer" class="btn" type="button">Start</button>
+            <button id="reset-timer" class="btn" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=900&auto=format&fit=crop&q=60"
+            alt="Clătite clasice"
+            class="recipe-img"
+          >
+        </div>
+      </div>
+
+      <div class="recipe-grid">
+        <section class="card">
+          <h2>🥞 Ingrediente</h2>
+          <ul id="ingredient-list">
+            <li data-base="200"><span class="qty">200</span> g făină</li>
+            <li data-base="2"><span class="qty">2</span> ouă</li>
+            <li data-base="500"><span class="qty">500</span> ml lapte</li>
+            <li data-base="30"><span class="qty">30</span> g zahăr</li>
+            <li data-base="20"><span class="qty">20</span> ml ulei</li>
+            <li>un praf de sare</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>📝 Instrucțiuni</h2>
+          <ol class="steps">
+            <li>Se amestecă ouăle cu zahărul și sarea.</li>
+            <li>Se adaugă laptele și făina treptat.</li>
+            <li>Se încorporează uleiul.</li>
+            <li>Lasă aluatul 5 minute să se odihnească.</li>
+            <li>Se coc clătitele într-o tigaie încinsă.</li>
+          </ol>
+        </section>
+      </div>
+
+      <section class="card">
+        <h2>💡 Sfaturi</h2>
+        <p>Lasă aluatul 5 minute să se odihnească înainte de coacere pentru clătite mai fine și uniforme.</p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <span>© 2026 Rețele culinare</span>
+      <span class="muted">realizat de Homutova Alexandra</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Înapoi sus" type="button">↑</button>
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

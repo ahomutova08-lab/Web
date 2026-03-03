@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <!-- Setări de bază: encoding + responsive pe mobil -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Titlul paginii (apare în tab-ul browserului) -->
+  <title>Cartofi copți - Rețele culinare</title>
+
+  <!-- Import fonturi Google (titluri + text) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Fișierul CSS principal al site-ului -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- HEADER: bară de sus cu brand / link spre pagina principală -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <!-- Brand-ul: duce înapoi la index -->
+      <a href="../index.html" class="brand">Rețele culinare</a>
+    </div>
+  </header>
+
+  <!-- Conținutul principal al paginii (aliniat cu .container) -->
+  <main class="container">
+    <!-- Articolul rețetei (conținut semantic) -->
+    <article class="recipe">
+
+      <!-- Titlul rețetei -->
+      <h1>Cartofi copți</h1>
+
+      <!-- Meta info (chips) + buton de favorit pe același rând -->
+      <div class="recipe-meta">
+        <!-- Durată -->
+        <span class="chip">⏱️ 45 min</span>
+        <!-- Dificultate -->
+        <span class="chip">📈 ușor</span>
+
+        <!-- Porții (valoarea din #portion-value e baza pentru JS) -->
+        <span class="chip">🍽️ <span id="portion-value">4</span> porții</span>
+
+        <!-- BUTON FAVORIT (pagina rețetei)
+             IMPORTANT: data-recipe trebuie să fie identic cu data-recipe din index.html,
+             ca favoritele să fie sincronizate între index și pagini. -->
+        <button
+          id="page-fav-btn"
+          class="page-fav-btn"
+          type="button"
+          data-recipe="retete/cartofi-copti.html"
+        >
+          <!-- Steaua (☆/★) este actualizată din JS -->
+          <span class="page-fav-star">☆</span>
+          <!-- Textul (Adaugă/Salvat) este actualizat din JS -->
+          <span class="page-fav-label">Adaugă la favorite</span>
+        </button>
+      </div>
+
+      <!-- Zona „hero” a rețetei: text + controale în stânga, imagine în dreapta -->
+      <div class="recipe-hero">
+        <div>
+          <!-- Descriere scurtă -->
+          <p>Cartofi copți la cuptor, aurii și crocanți – garnitura perfectă pentru orice friptură sau pește.</p>
+
+          <!-- Mesaj pentru utilizator despre funcționalitatea porțiilor -->
+          <p><strong>Ingredientele se ajustează automat când schimbi porțiile.</strong></p>
+
+          <!-- Controale porții:
+               JS ascultă click pe #dec-portion și #inc-portion,
+               actualizează #portion-value și #portion-live și cantitățile ingredientelor. -->
+          <div class="portion-controls">
+            <button id="dec-portion" type="button" aria-label="Scade porții">−</button>
+
+            <!-- Afișare live a porțiilor (se actualizează din JS) -->
+            <span class="portion-label">Porții: <span id="portion-live">4</span></span>
+
+            <button id="inc-portion" type="button" aria-label="Crește porții">+</button>
+          </div>
+
+          <!-- Timer:
+               - #timer-display conține valoarea inițială (MM:SS)
+               - #start-timer pornește / pune pauză
+               - #reset-timer revine la valoarea inițială -->
+          <div class="action-row">
+            <strong>Timer:</strong>
+            <span id="timer-display">35:00</span>
+            <button id="start-timer" class="btn" type="button">Start</button>
+            <button id="reset-timer" class="btn" type="button">Reset</button>
+          </div>
+        </div>
+
+        <!-- Imaginea rețetei -->
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1641898378503-327316fdde77?w=900&auto=format&fit=crop&q=60"
+            alt="Cartofi copți aurii și crocanți"
+            class="recipe-img"
+          >
+        </div>
+      </div>
+
+      <!-- Grilă cu două carduri: ingrediente + instrucțiuni -->
+      <div class="recipe-grid">
+
+        <!-- Card: Ingrediente -->
+        <section class="card">
+          <h2>🥔 Ingrediente</h2>
+
+          <!-- Lista ingredientelor:
+               - fiecare <li data-base="..."> are cantitatea pentru porțiile de bază (BASE)
+               - <span class="qty"> este ce actualizează JS când schimbi porțiile
+               - elementele fără data-base (ex: sare/piper) rămân neschimbate -->
+          <ul id="ingredient-list">
+            <li data-base="800"><span class="qty">800</span> g cartofi</li>
+            <li data-base="60"><span class="qty">60</span> ml ulei de măsline</li>
+            <li data-base="4"><span class="qty">4</span> căței usturoi</li>
+            <li data-base="1"><span class="qty">1</span> linguriță rozmarin uscat</li>
+            <li data-base="1"><span class="qty">1</span> linguriță cimbru uscat</li>
+            <li>sare și piper după gust</li>
+          </ul>
+        </section>
+
+        <!-- Card: Instrucțiuni -->
+        <section class="card">
+          <h2>📝 Instrucțiuni</h2>
+
+          <!-- Pașii rețetei:
+               - clasa .steps este folosită de JS pentru checklist
+               - la click pe un pas, JS îi adaugă/șterge .done și salvează în localStorage -->
+          <ol class="steps">
+            <li>Preîncălzește cuptorul la 200°C.</li>
+            <li>Spală cartofii și taie-i în cuburi potrivite.</li>
+            <li>Amestecă într-un bol cartofii cu ulei, usturoiul pisat și condimentele.</li>
+            <li>Întinde-i într-o tavă tapetată cu hârtie de copt.</li>
+            <li>Coace 35-40 minute, amestecând la jumătatea timpului.</li>
+          </ol>
+        </section>
+      </div>
+
+      <!-- Card extra: sfaturi -->
+      <section class="card">
+        <h2>💡 Sfaturi</h2>
+        <p>Pentru extra crocanță, poți adăuga puțină făină de mălai peste cartofi înainte de coacere.</p>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- FOOTER: informații de copyright + autor -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <span>© 2026 Rețele culinare</span>
+      <span class="muted">realizat de Homutova Alexandra</span>
+    </div>
+  </footer>
+
+  <!-- Buton Back to Top:
+       - JS îl afișează la scroll (adaugă clasa .show)
+       - la click, face scroll sus -->
+  <button class="back-to-top" id="back-to-top" aria-label="Înapoi sus" type="button">↑</button>
+
+  <!-- Toast pentru mesaje (ex: adăugat/șters din favorite)
+       - JS setează text + clasa .show -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Scriptul principal (favorite, filtrare, porții, checklist, timer, back-to-top) -->
+  <script src="../js/script.js"></script>
+</body>
+</html>

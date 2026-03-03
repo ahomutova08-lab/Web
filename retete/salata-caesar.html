@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salată Caesar - Rețele culinare</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../index.html" class="brand">Rețele culinare</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="recipe" data-recipe-id="salata-caesar" data-fav-key="retete/salata-caesar.html">
+
+      <h1>Salată Caesar</h1>
+
+      <div class="recipe-meta">
+        <span class="chip">⏱️ 20 min</span>
+        <span class="chip">📈 ușor</span>
+        <span class="chip">🍽️ <span id="portion-value">2</span> porții</span>
+
+        <button id="page-fav-btn" class="page-fav-btn" type="button" data-recipe="retete/salata-caesar.html">
+          <span class="page-fav-star">☆</span>
+          <span class="page-fav-label">Adaugă la favorite</span>
+        </button>
+      </div>
+
+      <div class="recipe-hero">
+        <div>
+          <p>Salata Caesar este un preparat gustos și echilibrat, perfect pentru un prânz sau o cină ușoară.</p>
+          <p><strong>Ingredientele se ajustează automat când schimbi porțiile.</strong></p>
+
+          <div class="portion-controls">
+            <button id="dec-portion" type="button" aria-label="Scade porții">−</button>
+            <span class="portion-label">Porții: <span id="portion-live">2</span></span>
+            <button id="inc-portion" type="button" aria-label="Crește porții">+</button>
+          </div>
+
+          <div class="action-row">
+            <strong>Timer:</strong>
+            <span id="timer-display">20:00</span>
+            <button id="start-timer" class="btn" type="button">Start</button>
+            <button id="reset-timer" class="btn" type="button">Reset</button>
+          </div>
+
+          <div class="note" style="margin-top:12px;">
+            <strong>Sfat:</strong> Adaugă sosul chiar înainte de servire pentru o textură proaspătă.
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="https://media.istockphoto.com/id/991861846/photo/homemade-cesar-salad-with-chicken-lettuce-and-parmesan.webp?a=1&b=1&s=612x612&w=0&k=20&c=lGzBXd30zY4RMPpD9JGG8XL8ii_2e2g2xzJqC71uzoY="
+            alt="Salată Caesar"
+            class="recipe-img"
+          />
+        </div>
+      </div>
+
+      <div class="recipe-grid">
+
+        <section class="card">
+          <h2>🥗 Ingrediente</h2>
+          <ul id="ingredient-list">
+            <li data-base="200"><span class="qty">200</span> g piept de pui</li>
+            <li data-base="100"><span class="qty">100</span> g salată verde</li>
+            <li data-base="50"><span class="qty">50</span> g crutoane</li>
+            <li data-base="30"><span class="qty">30</span> g parmezan</li>
+            <li data-base="50"><span class="qty">50</span> g sos Caesar</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>📝 Mod de preparare</h2>
+          <ol class="steps">
+            <li>Pieptul de pui se gătește și se taie cubulețe.</li>
+            <li>Salata verde se rupe în bucăți.</li>
+            <li>Se adaugă crutoanele, parmezanul și sosul Caesar.</li>
+            <li>Se amestecă bine și se servește.</li>
+          </ol>
+        </section>
+
+      </div>
+
+      <section class="card">
+        <h2>💡 Sfaturi</h2>
+        <p>Dacă vrei o salată mai “light”, pune sosul treptat și completează cu 1–2 linguri de iaurt pentru o variantă mai lejeră.</p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <span>© 2026 Rețele culinare</span>
+      <span class="muted">realizat de Homutova Alexandra</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Înapoi sus" type="button">↑</button>
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

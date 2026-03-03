@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overnight oats - Rețele culinare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../index.html" class="brand">Rețele culinare</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="recipe">
+
+      <h1>Overnight oats</h1>
+
+      <div class="recipe-meta">
+        <span class="chip">⏱️ 5 min + noapte</span>
+        <span class="chip">📈 foarte ușor</span>
+        <span class="chip">🍽️ <span id="portion-value">1</span> porție</span>
+
+        <button id="page-fav-btn" class="page-fav-btn" type="button" data-recipe="retete/overnight-oats.html">
+          <span class="page-fav-star">☆</span>
+          <span class="page-fav-label">Adaugă la favorite</span>
+        </button>
+      </div>
+
+      <div class="recipe-hero">
+        <div>
+          <p>Overnight oats sunt un mic dejun sănătos și hrănitor, pregătit rapid, perfect pentru zilele aglomerate.</p>
+          <p><strong>Ingredientele se ajustează automat când schimbi porțiile.</strong></p>
+
+          <div class="portion-controls">
+            <button id="dec-portion" type="button" aria-label="Scade porții">−</button>
+            <span class="portion-label">Porții: <span id="portion-live">1</span></span>
+            <button id="inc-portion" type="button" aria-label="Crește porții">+</button>
+          </div>
+
+          <div class="action-row">
+            <strong>Timer:</strong>
+            <span id="timer-display">05:00</span>
+            <button id="start-timer" class="btn" type="button">Start</button>
+            <button id="reset-timer" class="btn" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1490371475955-4cb3bfc72f71?w=900&auto=format&fit=crop&q=60"
+            alt="Overnight oats"
+            class="recipe-img"
+          >
+        </div>
+      </div>
+
+      <div class="recipe-grid">
+
+        <section class="card">
+          <h2>🌾 Ingrediente</h2>
+          <ul id="ingredient-list">
+            <li data-base="60"><span class="qty">60</span> g fulgi de ovăz</li>
+            <li data-base="200"><span class="qty">200</span> ml lapte</li>
+            <li data-base="100"><span class="qty">100</span> g fructe</li>
+            <li data-base="15"><span class="qty">15</span> g miere</li>
+            <li data-base="10"><span class="qty">10</span> g semințe (opțional)</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>📝 Instrucțiuni</h2>
+          <ol class="steps">
+            <li>Amestecă ovăzul, laptele și mierea într-un borcan.</li>
+            <li>Adaugă fructele și semințele (opțional).</li>
+            <li>Acoperă borcanul și lasă la frigider minim 6–8 ore (peste noapte).</li>
+            <li>Dimineața amestecă bine și servește rece.</li>
+          </ol>
+        </section>
+
+      </div>
+
+      <section class="card">
+        <h2>💡 Sfaturi</h2>
+        <p>Pentru o textură mai cremoasă, înlocuiește jumătate din lapte cu iaurt. Poți adăuga și o linguriță de unt de arahide pentru mai multă proteină.</p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <span>© 2026 Rețele culinare</span>
+      <span class="muted">realizat de Homutova Alexandra</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Înapoi sus" type="button">↑</button>
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

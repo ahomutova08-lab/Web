@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Rețele culinare</title>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner container">
+    <a class="brand" href="index.html">Rețele culinare</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="hero">
+    <h1>Rețete pentru fiecare zi</h1>
+    <p class="hero-sub">Descoperă, gătește și salvează rețetele tale preferate.</p>
+  </div>
+
+  <div class="controls">
+    <input type="text" id="search-input" class="input" placeholder="🔍  Caută rețete..." aria-label="Caută rețete">
+    <select id="category-filter" class="select" aria-label="Filtrează după categorie">
+      <option value="all">Toate categoriile</option>
+      <option value="Mic dejun">Mic dejun</option>
+      <option value="Prânz">Prânz</option>
+      <option value="Cină">Cină</option>
+    </select>
+    <label class="fav-filter-label" id="fav-label">
+      <input type="checkbox" id="favorites-only">
+      <span class="fav-filter-star">☆</span>
+      <span>Doar favorite</span>
+    </label>
+  </div>
+
+  <div id="recipes-container">
+
+    <h2 class="category-title" data-category="Mic dejun">Mic dejun</h2>
+    <ul class="recipes" id="breakfast-list">
+      <li class="recipe-item" data-category="Mic dejun" data-name="clatite clasice" data-recipe="retete/clatite.html">
+        <a href="retete/clatite.html">Clătite clasice</a>
+        <button class="fav-btn" type="button" data-recipe="retete/clatite.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+      <li class="recipe-item" data-category="Mic dejun" data-name="overnight oats" data-recipe="retete/overnight-oats.html">
+        <a href="retete/overnight-oats.html">Overnight oats</a>
+        <button class="fav-btn" type="button" data-recipe="retete/overnight-oats.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+      <li class="recipe-item" data-category="Mic dejun" data-name="omleta cu legume" data-recipe="retete/omleta.html">
+        <a href="retete/omleta.html">Omletă cu legume</a>
+        <button class="fav-btn" type="button" data-recipe="retete/omleta.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+      <li class="recipe-item" data-category="Mic dejun" data-name="sandwich cald" data-recipe="retete/sandwich.html">
+        <a href="retete/sandwich.html">Sandwich cald</a>
+        <button class="fav-btn" type="button" data-recipe="retete/sandwich.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+    </ul>
+
+    <h2 class="category-title" data-category="Prânz">Prânz</h2>
+    <ul class="recipes" id="lunch-list">
+      <li class="recipe-item" data-category="Prânz" data-name="supa de legume" data-recipe="retete/supa-legume.html">
+        <a href="retete/supa-legume.html">Supă de legume</a>
+        <button class="fav-btn" type="button" data-recipe="retete/supa-legume.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+      <li class="recipe-item" data-category="Prânz" data-name="paste carbonara" data-recipe="retete/paste-carbonara.html">
+        <a href="retete/paste-carbonara.html">Paste Carbonara</a>
+        <button class="fav-btn" type="button" data-recipe="retete/paste-carbonara.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+      <li class="recipe-item" data-category="Prânz" data-name="orez cu legume" data-recipe="retete/orez-legume.html">
+        <a href="retete/orez-legume.html">Orez cu legume</a>
+        <button class="fav-btn" type="button" data-recipe="retete/orez-legume.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+      <li class="recipe-item" data-category="Prânz" data-name="pui la cuptor" data-recipe="retete/pui-la-cuptor.html">
+        <a href="retete/pui-la-cuptor.html">Pui la cuptor</a>
+        <button class="fav-btn" type="button" data-recipe="retete/pui-la-cuptor.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+    </ul>
+
+    <h2 class="category-title" data-category="Cină">Cină</h2>
+    <ul class="recipes" id="dinner-list">
+      <li class="recipe-item" data-category="Cină" data-name="salata caesar" data-recipe="retete/salata-caesar.html">
+        <a href="retete/salata-caesar.html">Salată Caesar</a>
+        <button class="fav-btn" type="button" data-recipe="retete/salata-caesar.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+      <li class="recipe-item" data-category="Cină" data-name="peste la gratar" data-recipe="retete/peste-gratar.html">
+        <a href="retete/peste-gratar.html">Pește la grătar</a>
+        <button class="fav-btn" type="button" data-recipe="retete/peste-gratar.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+      <li class="recipe-item" data-category="Cină" data-name="cartofi copti" data-recipe="retete/cartofi-copti.html">
+        <a href="retete/cartofi-copti.html">Cartofi copți</a>
+        <button class="fav-btn" type="button" data-recipe="retete/cartofi-copti.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+      <li class="recipe-item" data-category="Cină" data-name="tocanita de legume" data-recipe="retete/tocanita.html">
+        <a href="retete/tocanita.html">Tocăniță de legume</a>
+        <button class="fav-btn" type="button" data-recipe="retete/tocanita.html" aria-label="Adaugă la favorite">☆</button>
+      </li>
+    </ul>
+
+  </div>
+
+  <p class="no-results" id="no-results">Nicio rețetă nu corespunde filtrelor selectate.</p>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner container">
+    <div class="muted">© 2026 Rețele culinare, realizat de Homutova Alexandra</div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="back-to-top" aria-label="Înapoi sus" type="button">↑</button>
+
+<script src="js/script.js"></script>
+</body>
+</html>

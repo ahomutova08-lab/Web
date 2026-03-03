@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pui la cuptor - Rețele culinare</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../index.html" class="brand">Rețele culinare</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="recipe" data-recipe-id="pui-la-cuptor" data-fav-key="retete/pui-la-cuptor.html">
+
+      <h1>Pui la cuptor</h1>
+
+      <div class="recipe-meta">
+        <span class="chip">⏱️ 60 min</span>
+        <span class="chip">📈 mediu</span>
+        <span class="chip">🍽️ <span id="portion-value">4</span> porții</span>
+
+        <button id="page-fav-btn" class="page-fav-btn" type="button" data-recipe="retete/pui-la-cuptor.html">
+          <span class="page-fav-star">☆</span>
+          <span class="page-fav-label">Adaugă la favorite</span>
+        </button>
+      </div>
+
+      <div class="recipe-hero">
+        <div>
+          <p>Puiul la cuptor este un preparat gustos și sățios, ideal pentru un prânz sau o cină consistentă.</p>
+          <p><strong>Ingredientele se ajustează automat când schimbi porțiile.</strong></p>
+
+          <div class="portion-controls">
+            <button id="dec-portion" type="button" aria-label="Scade porții">−</button>
+            <span class="portion-label">Porții: <span id="portion-live">4</span></span>
+            <button id="inc-portion" type="button" aria-label="Crește porții">+</button>
+          </div>
+
+          <div class="action-row">
+            <strong>Timer:</strong>
+            <span id="timer-display">60:00</span>
+            <button id="start-timer" class="btn" type="button">Start</button>
+            <button id="reset-timer" class="btn" type="button">Reset</button>
+          </div>
+
+          <div class="note" style="margin-top:12px;">
+            <strong>Sfat:</strong> Pentru o crustă rumenă și crocantă, unge carnea cu puțin ulei înainte de coacere.
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="https://plus.unsplash.com/premium_photo-1661419883163-bb4df1c10109?w=900&auto=format&fit=crop&q=60"
+            alt="Pui la cuptor"
+            class="recipe-img"
+          />
+        </div>
+      </div>
+
+      <div class="recipe-grid">
+        <section class="card">
+          <h2>🍗 Ingrediente</h2>
+          <ul id="ingredient-list">
+            <li data-base="1000"><span class="qty">1000</span> g carne de pui (gambe)</li>
+            <li data-base="40"><span class="qty">40</span> ml ulei</li>
+            <li data-base="10"><span class="qty">10</span> g sare</li>
+            <li>condimente după gust</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>📝 Mod de preparare</h2>
+          <ol class="steps">
+            <li>Puiul se condimentează.</li>
+            <li>Se așază într-o tavă și se unge cu ulei.</li>
+            <li>Se coace la 180°C timp de 50–60 minute.</li>
+          </ol>
+        </section>
+      </div>
+
+      <section class="card">
+        <h2>💡 Sfaturi</h2>
+        <p>Pentru un pui mai suculent, întoarce bucățile la jumătatea timpului și poți adăuga 2–3 linguri de apă în tavă.</p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <span>© 2026 Rețele culinare</span>
+      <span class="muted">realizat de Homutova Alexandra</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Înapoi sus" type="button">↑</button>
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

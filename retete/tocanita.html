@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tocăniță de legume - Rețele culinare</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../index.html" class="brand">Rețele culinare</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="recipe" data-recipe-id="tocanita-legume" data-fav-key="retete/tocanita.html">
+
+      <h1>Tocăniță de legume</h1>
+
+      <div class="recipe-meta">
+        <span class="chip">⏱️ 35 min</span>
+        <span class="chip">📈 mediu</span>
+        <span class="chip">🍽️ <span id="portion-value">3</span> porții</span>
+
+        <button id="page-fav-btn" class="page-fav-btn" type="button" data-recipe="retete/tocanita.html">
+          <span class="page-fav-star">☆</span>
+          <span class="page-fav-label">Adaugă la favorite</span>
+        </button>
+      </div>
+
+      <div class="recipe-hero">
+        <div>
+          <p>Tocănița de legume este un preparat aromat și sățios, perfect pentru prânz sau cină.</p>
+          <p><strong>Ingredientele se ajustează automat când schimbi porțiile.</strong></p>
+
+          <div class="portion-controls">
+            <button id="dec-portion" type="button" aria-label="Scade porții">−</button>
+            <span class="portion-label">Porții: <span id="portion-live">3</span></span>
+            <button id="inc-portion" type="button" aria-label="Crește porții">+</button>
+          </div>
+
+          <div class="action-row">
+            <strong>Timer:</strong>
+            <span id="timer-display">35:00</span>
+            <button id="start-timer" class="btn" type="button">Start</button>
+            <button id="reset-timer" class="btn" type="button">Reset</button>
+          </div>
+
+          <div class="note" style="margin-top:12px;">
+            <strong>Sfat:</strong> Dacă vrei o textură mai cremoasă, lasă tocănița să scadă la foc mic fără capac în ultimele 5 minute.
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="https://i.pinimg.com/736x/dc/55/13/dc55133687ec0be6231583cc32508dfe.jpg"
+            alt="Tocăniță de legume"
+            class="recipe-img"
+          />
+        </div>
+      </div>
+
+      <div class="recipe-grid">
+
+        <section class="card">
+          <h2>🥘 Ingrediente</h2>
+          <ul id="ingredient-list">
+            <li data-base="200"><span class="qty">200</span> g dovlecel</li>
+            <li data-base="200"><span class="qty">200</span> g vinete</li>
+            <li data-base="100"><span class="qty">100</span> g ceapă</li>
+            <li data-base="200"><span class="qty">200</span> g roșii</li>
+            <li data-base="30"><span class="qty">30</span> ml ulei</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>📝 Mod de preparare</h2>
+          <ol class="steps">
+            <li>Dovlecelul și vinetele se taie cubulețe.</li>
+            <li>Ceapa se toacă mărunt.</li>
+            <li>Roșiile se decojesc și se taie cuburi.</li>
+            <li>Se încinge uleiul într-o tigaie și se adaugă ceapa.</li>
+            <li>Se călește ceapa până devine transparentă, apoi se adaugă dovlecelul și vinetele.</li>
+            <li>Se adaugă roșiile și se condimentează cu sare și piper.</li>
+            <li>Se lasă să fiarbă la foc mic timp de 20–25 minute.</li>
+          </ol>
+        </section>
+
+      </div>
+
+      <section class="card">
+        <h2>💡 Sfaturi</h2>
+        <p>Pentru aromă extra, poți adăuga 1 cățel de usturoi spre final și puțin pătrunjel proaspăt înainte de servire.</p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <span>© 2026 Rețele culinare</span>
+      <span class="muted">realizat de Homutova Alexandra</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Înapoi sus" type="button">↑</button>
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
