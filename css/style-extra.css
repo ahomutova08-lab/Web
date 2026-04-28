@@ -1,0 +1,351 @@
+/*
+  style-extra.css — Stiluri suplimentare pentru elementele PHP
+  Completează style.css fără a-l modifica.
+  1) Badge vizualizări (header)
+  2) Statistici hero (index)
+  3) Rating mediu în chip + mini-rating pe carduri
+  4) Secțiunea Recenzii: distribuție stele, formular, comentarii
+  5) Buton soft (resetare filtre)
+  6) Banner rezultate (PHP search)
+*/
+
+/* ═══════════════════════════════════════════════
+   1) BADGE VIZUALIZĂRI (header)
+   ═══════════════════════════════════════════════ */
+.views-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.92);
+  border-radius: 40px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════
+   2) STATISTICI HERO (index)
+   ═══════════════════════════════════════════════ */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-soft);
+  border: 1px solid var(--card-border);
+  border-radius: 40px;
+  padding: 7px 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.stat-chip strong {
+  color: var(--accent);
+  font-size: 15px;
+}
+
+/* ═══════════════════════════════════════════════
+   3) RATING — chip + mini pe carduri index
+   ═══════════════════════════════════════════════ */
+
+/* Chip rating pe pagina rețetei */
+.chip-rating {
+  gap: 6px;
+  background: var(--gold-bg);
+  border-color: var(--gold-border);
+  color: #7a5000;
+}
+.chip-rating .stars { color: var(--gold); letter-spacing: 1px; }
+.chip-rating-empty  { color: var(--text-muted); font-style: italic; }
+.rating-count       { font-weight: 400; font-size: 14px; color: var(--text-muted); }
+
+/* Mini rating pe cardul din index */
+.mini-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  border-radius: 20px;
+  padding: 3px 9px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.mini-rating-count { color: var(--text-muted); font-weight: 400; }
+
+/* ═══════════════════════════════════════════════
+   4) SECȚIUNEA RECENZII
+   ═══════════════════════════════════════════════ */
+
+.reviews-section { margin-top: 24px; }
+
+/* Titlu secțiune cu rating inline */
+.reviews-summary-inline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gold);
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.reviews-summary-inline .stars { letter-spacing: 1px; }
+
+/* ── Distribuție bare ── */
+.rating-dist {
+  margin: 12px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rating-dist-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+.rating-dist-label {
+  min-width: 28px;
+  text-align: right;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 13px;
+}
+.rating-dist-bar-wrap {
+  flex: 1;
+  height: 10px;
+  background: var(--bg-soft);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.rating-dist-bar {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(.4,0,.2,1);
+  min-width: 2px;
+}
+.rating-dist-count {
+  min-width: 22px;
+  text-align: right;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── Mesaj succes ── */
+.form-success {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #166534;
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+/* ── Erori formular ── */
+.form-errors {
+  background: #fff1f2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+}
+.form-errors ul { margin: 6px 0 0 18px; padding: 0; font-size: 14px; }
+.form-errors li { margin-bottom: 4px; }
+
+/* ── Formular recenzie (în <details>) ── */
+.review-form-details {
+  border: 1px dashed var(--card-border);
+  border-radius: var(--radius);
+  margin: 20px 0;
+  overflow: hidden;
+}
+.review-form-details summary {
+  padding: 14px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  background: var(--bg-soft);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+.review-form-details summary:hover  { background: var(--bg-main); }
+.review-form-details[open] summary  { border-bottom: 1px dashed var(--card-border); }
+.review-form-details summary::-webkit-details-marker { display: none; }
+
+.review-form {
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-row label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Textarea */
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Contor caractere */
+.char-counter {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: right;
+}
+.char-counter.counter-warn { color: #b45309; font-weight: 600; }
+
+/* ── Star picker (input radio CSS) ── */
+.star-picker {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.star-picker input[type="radio"] { display: none; }
+.star-picker label {
+  font-size: 32px;
+  color: var(--bg-soft);
+  cursor: pointer;
+  transition: color 0.15s, transform 0.1s;
+  line-height: 1;
+  padding: 2px;
+}
+/* Stele selectate și hover */
+.star-picker input:checked ~ label,
+.star-picker label:hover,
+.star-picker label:hover ~ label {
+  color: var(--gold);
+  transform: scale(1.1);
+}
+
+/* ── Lista comentarii ── */
+.comments-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.comment-card {
+  background: var(--bg-main);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.comment-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.comment-author {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-main);
+}
+.comment-stars {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.comment-date {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+.comment-body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+.no-reviews {
+  font-style: italic;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   5) BUTON SOFT (resetare filtre index)
+   ═══════════════════════════════════════════════ */
+.btn-soft {
+  background: var(--bg-soft);
+  color: var(--text-main);
+  border: 1.5px solid var(--card-border);
+}
+.btn-soft:hover {
+  background: var(--card-border);
+  color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════
+   6) BANNER REZULTATE CĂUTARE (PHP)
+   ═══════════════════════════════════════════════ */
+.results-banner {
+  background: var(--bg-soft);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 15px;
+  color: var(--text-main);
+  margin-bottom: 24px;
+}
+.results-banner strong { color: var(--accent); }
+.results-banner em     { font-style: italic; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE EXTRA
+   ═══════════════════════════════════════════════ */
+@media (max-width: 520px) {
+  .views-badge    { font-size: 11px; padding: 5px 10px; }
+  .star-picker label { font-size: 26px; }
+  .comment-date   { margin-left: 0; }
+}
+/* Loading spinner */
+.loading-spinner {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #991b1b;
+    background: #fff1f2;
+    border-radius: var(--radius);
+}

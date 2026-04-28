@@ -1,0 +1,210 @@
+<?php
+require_once __DIR__ . '/../includes/db.php';
+
+$RECIPE_KEY = 'salata-caesar';
+
+$views = incrementViews($RECIPE_KEY);
+
+$formErrors  = [];
+$formSuccess = false;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_review'])) {
+    $author = trim($_POST['author'] ?? '');
+    $body   = trim($_POST['body']   ?? '');
+    $rating = (int)($_POST['rating'] ?? 0);
+
+    if (mb_strlen($author) < 2)   $formErrors[] = 'Numele trebuie să aibă cel puțin 2 caractere.';
+    if (mb_strlen($author) > 60)  $formErrors[] = 'Numele este prea lung (max 60 caractere).';
+    if (mb_strlen($body)   < 5)   $formErrors[] = 'Recenzia trebuie să aibă cel puțin 5 caractere.';
+    if (mb_strlen($body)   > 800) $formErrors[] = 'Recenzia este prea lungă (max 800 caractere).';
+    if ($rating < 1 || $rating > 5) $formErrors[] = 'Te rugăm să alegi un rating (1–5 stele).';
+
+    if (empty($formErrors)) {
+        addComment($RECIPE_KEY, $author, $body, $rating);
+        $formSuccess = true;
+        header('Location: ' . $_SERVER['PHP_SELF'] . '?added=1');
+        exit;
+    }
+}
+
+$comments = getComments($RECIPE_KEY);
+$summary  = getRatingSummary($RECIPE_KEY);
+
+function e(string $s): string {
+    return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+}
+
+function renderStars(float $rating, bool $interactive = false): string {
+    if ($interactive) {
+        $html = '<div class="star-picker" role="radiogroup" aria-label="Rating">';
+        for ($i = 5; $i >= 1; $i--) {
+            $html .= '<input type="radio" name="rating" id="star'.$i.'" value="'.$i.'" required>';
+            $html .= '<label for="star'.$i.'" title="'.$i.' stele" aria-label="'.$i.' '.($i === 1 ? 'stea' : 'stele').'">★</label>';
+        }
+        $html .= '</div>';
+        return $html;
+    }
+    $html = '<span class="stars" aria-label="'.round($rating).' din 5 stele">';
+    for ($i = 1; $i <= 5; $i++) {
+        $html .= $i <= $rating ? '★' : '☆';
+    }
+    $html .= '</span>';
+    return $html;
+}
+
+function formatDate(int $ts): string {
+    $months = ['', 'ian.', 'feb.', 'mar.', 'apr.', 'mai', 'iun.',
+                    'iul.', 'aug.', 'sep.', 'oct.', 'nov.', 'dec.'];
+    return date('j', $ts) . ' ' . $months[(int)date('n', $ts)] . ' ' . date('Y', $ts);
+}
+?>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title"       content="Salată Caesar – Rețele culinare">
+  <meta property="og:description" content="Salată Caesar gustoasă și echilibrată. ⏱ 20 min · 📈 ușor · <?= $summary['count'] ?> recenzii.">
+  <meta property="og:image"       content="https://media.istockphoto.com/id/991861846/photo/homemade-cesar-salad-with-chicken-lettuce-and-parmesan.webp?a=1&b=1&s=612x612&w=0&k=20&c=lGzBXd30zY4RMPpD9JGG8XL8ii_2e2g2xzJqC71uzoY=">
+  <meta property="og:type"        content="article">
+
+  <title>Salată Caesar - Rețele culinare</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style-extra.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../index.php" class="brand">Rețele culinare</a>
+      <span class="views-badge" title="De câte ori a fost vizualizată această rețetă">
+        👁 <?= number_format($views, 0, ',', '.') ?> vizualizări
+      </span>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="recipe">
+
+      <h1>Salată Caesar</h1>
+
+      <div class="recipe-meta">
+        <span class="chip">⏱️ 20 min</span>
+        <span class="chip">📈 ușor</span>
+        <span class="chip">🍽️ <span id="portion-value">2</span> porții</span>
+
+        <?php if ($summary['count'] > 0): ?>
+          <span class="chip chip-rating">
+            <?= renderStars($summary['avg']) ?>
+            <strong><?= $summary['avg'] ?></strong>
+            <span class="rating-count">(<?= $summary['count'] ?> <?= $summary['count'] === 1 ? 'recenzie' : 'recenzii' ?>)</span>
+          </span>
+        <?php else: ?>
+          <span class="chip chip-rating chip-rating-empty">☆ Fii primul care lasă o recenzie</span>
+        <?php endif; ?>
+
+        <button id="page-fav-btn" class="page-fav-btn" type="button" data-recipe="retete/salata-caesar.php">
+          <span class="page-fav-star">☆</span>
+          <span class="page-fav-label">Adaugă la favorite</span>
+        </button>
+      </div>
+
+      <div class="recipe-hero">
+        <div>
+          <p>Salata Caesar este un preparat gustos și echilibrat, perfect pentru un prânz sau o cină ușoară.</p>
+          <p><strong>Ingredientele se ajustează automat când schimbi porțiile.</strong></p>
+
+          <div class="portion-controls">
+            <button id="dec-portion" type="button" aria-label="Scade porții">−</button>
+            <span class="portion-label">Porții: <span id="portion-live">2</span></span>
+            <button id="inc-portion" type="button" aria-label="Crește porții">+</button>
+          </div>
+
+          <div class="action-row">
+            <strong>Timer:</strong>
+            <span id="timer-display">20:00</span>
+            <button id="start-timer" class="btn" type="button">Start</button>
+            <button id="reset-timer" class="btn" type="button">Reset</button>
+          </div>
+
+          <div class="note" style="margin-top:12px;">
+            <strong>Sfat:</strong> Adaugă sosul chiar înainte de servire pentru o textură proaspătă.
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="https://media.istockphoto.com/id/991861846/photo/homemade-cesar-salad-with-chicken-lettuce-and-parmesan.webp?a=1&b=1&s=612x612&w=0&k=20&c=lGzBXd30zY4RMPpD9JGG8XL8ii_2e2g2xzJqC71uzoY="
+            alt="Salată Caesar"
+            class="recipe-img"
+            width="612"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <div class="recipe-grid">
+
+        <section class="card">
+          <h2>🥗 Ingrediente</h2>
+          <ul id="ingredient-list">
+            <li data-base="200"><span class="qty">200</span> g piept de pui</li>
+            <li data-base="100"><span class="qty">100</span> g salată verde</li>
+            <li data-base="50"><span class="qty">50</span> g crutoane</li>
+            <li data-base="30"><span class="qty">30</span> g parmezan</li>
+            <li data-base="50"><span class="qty">50</span> g sos Caesar</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>📝 Mod de preparare</h2>
+          <ol class="steps">
+            <li>Pieptul de pui se gătește și se taie cubulețe.</li>
+            <li>Salata verde se rupe în bucăți.</li>
+            <li>Se adaugă crutoanele, parmezanul și sosul Caesar.</li>
+            <li>Se amestecă bine și se servește.</li>
+          </ol>
+        </section>
+
+      </div>
+
+      <section class="card">
+        <h2>💡 Sfaturi</h2>
+        <p>Dacă vrei o salată mai "light", pune sosul treptat și completează cu 1–2 linguri de iaurt pentru o variantă mai lejeră.</p>
+      </section>
+
+       <!-- ════════════════════════════════════════════════════ -->
+      <!-- SECȚIUNEA RECENZII (ÎNCĂRCATĂ VIA AJAX)             -->
+      <!-- ════════════════════════════════════════════════════ -->
+      <section class="card reviews-section" id="recenzii">
+        <h2>💬 Recenzii</h2>
+        <div id="reviews-ajax-container" data-recipe="<?= $RECIPE_KEY ?>">
+          <div class="loading-spinner">⏳ Se încarcă recenziile...</div>
+        </div>
+      </section>
+      <!-- /recenzii -->
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <span>© <?= date('Y') ?> Rețele culinare</span>
+      <span class="muted">realizat de Homutova Alexandra</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Înapoi sus" type="button">↑</button>
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/script.js"></script>
+  <script>
+    // Calea către folderul /api/ raportată la pagina curentă (suntem în /retete/)
+    window.API_BASE = '../api/';
+  </script>
+  <script src="../js/ajax.js"></script>
+</body>
+</html>
